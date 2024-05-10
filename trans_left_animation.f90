@@ -7,11 +7,9 @@ program merge_files !written by Aditya Barman
     ! Open the output file
     open(unit=11, file= "animation_trans_left.xyz", iostat=io_status)
      
-
-    ! Loop through input files and write their content to the output file
+    ! making loop through input files and store their content to the output file
     do j = 1, 26
         input_file = 'trans_left_' // trim(adjustl(int2str(j))) // '.xyz'
-
         new_directory_name = 'trans_left_' // trim(adjustl(int2str(j)))
         
         ! Opening input file
@@ -21,15 +19,15 @@ program merge_files !written by Aditya Barman
             close(11)
             stop
         end if
-
+        
+        !read the each lines of the input files
         do
-            read(unit_in, '(A)', iostat=io_status) line
-            if (io_status /= 0) then
-                exit
-            end if
-            write(11, '(A)') trim(line)
+         read(unit_in, '(A)', iostat=io_status) line
+         if (io_status /= 0) then
+         exit
+         end if
+         write(11, '(A)') trim(line)
         end do
-
         close(unit_in)
      
          !make the new directory/folder
@@ -38,10 +36,7 @@ program merge_files !written by Aditya Barman
          ! move the new output file, inside the new folder
          call system('mv ' // trim(input_file) // ' ' // trim(new_directory_name) // '/')
     end do
-
     close(11)
-
-     
 
 contains
 
