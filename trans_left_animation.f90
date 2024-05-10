@@ -5,7 +5,7 @@ program merge_files !written by Aditya Barman
     integer :: j, unit_in, io_status
 
     ! Open the output file
-    open(unit=11, file= "animation_trans_left.xyz", status='replace', action='write', iostat=io_status)
+    open(unit=11, file= "animation_trans_left.xyz", iostat=io_status)
      
 
     ! Loop through input files and write their content to the output file
