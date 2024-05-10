@@ -15,7 +15,7 @@ program merge_files !written by Aditya Barman
         new_directory_name = 'trans_left_' // trim(adjustl(int2str(j)))
         
         ! Opening input file
-        open(newunit=unit_in, file=input_file, status='old', action='read', iostat=io_status)
+        open(newunit=unit_in, file=input_file, iostat=io_status)
         if (io_status /= 0) then
             print*, "Error opening input file ", input_file
             close(11)
